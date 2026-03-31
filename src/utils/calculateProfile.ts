@@ -52,7 +52,6 @@ export function calculateProfile(
 
   if (!bestProfile) {
     for (const profile of profiles) {
-      // Skip special profiles during normal genre matching
       if (['movie-buff', 'hard-to-please', 'cinema-newbie'].includes(profile.id)) continue;
 
       let score = 0;
@@ -73,7 +72,6 @@ export function calculateProfile(
       }
     }
   } else {
-    // For special profiles, we set a high match score
     bestScore = 1.0;
   }
 

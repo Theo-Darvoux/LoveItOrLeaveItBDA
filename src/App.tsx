@@ -5,6 +5,7 @@ import { GameScreen } from './screens/GameScreen';
 import { ResultScreen } from './screens/ResultScreen';
 import { useGameState } from './hooks/useGameState';
 import { useSound } from './hooks/useSound';
+import { ImagePreloader } from './components/ImagePreloader';
 
 function App() {
   const { state, currentMovie, nextMovie, startGame, swipe, finish, restart, toggleSound } = useGameState();
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <div className="app">
+      <ImagePreloader />
       <CinemaBackground />
       <AnimatePresence mode="wait">
         {state.screen === 'welcome' && (

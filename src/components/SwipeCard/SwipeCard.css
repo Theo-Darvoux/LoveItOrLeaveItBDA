@@ -7,12 +7,8 @@
   cursor: grab;
   user-select: none;
   touch-action: none;
-  /* Hardware acceleration */
-  will-change: transform;
   backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
   background: #111; 
-  /* Containment to isolate layout/paint */
   contain: paint;
 }
 
@@ -24,11 +20,6 @@
   z-index: 2;
 }
 
-/* 
-  Use a pseudo-element for the shadow. 
-  By putting it on its own layer, we avoid expensive box-shadow 
-  recalculations on the main element during transform/rotation.
-*/
 .swipe-card--top::after {
   content: "";
   position: absolute;
@@ -37,7 +28,6 @@
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7);
   z-index: -1;
   pointer-events: none;
-  will-change: transform;
   transform: translateZ(-1px);
 }
 
@@ -52,7 +42,7 @@
 }
 
 .swipe-card--exiting::after {
-  display: none; /* Hide shadow during exit for maximum FPS */
+  display: none;
 }
 
 .swipe-card__poster {
@@ -63,9 +53,6 @@
   justify-content: flex-end;
   background-size: cover;
   background-position: center;
-  /* Promote poster to its own compositor layer */
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 
@@ -80,10 +67,9 @@
     rgba(255, 255, 255, 0.4),
     transparent
   );
-  transform: skewX(-20deg) translateZ(0);
+  transform: skewX(-20deg);
   pointer-events: none;
   z-index: 4;
-  will-change: transform;
 }
 
 .swipe-card__grain {
@@ -143,8 +129,6 @@
   display: inline-block;
 }
 
-
-/* Swipe Overlays */
 .swipe-overlay {
   position: absolute;
   inset: 0;
@@ -154,9 +138,6 @@
   pointer-events: none;
   z-index: 10;
   border-radius: inherit;
-  /* Promote overlays to their own layer to avoid repainting the whole card */
-  transform: translateZ(0);
-  will-change: opacity;
 }
 
 .swipe-overlay--love {

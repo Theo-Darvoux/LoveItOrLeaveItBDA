@@ -66,7 +66,6 @@ export function WelcomeScreen({ onStart, soundEnabled, onToggleSound, playSound 
         ease: [0.4, 0, 0.2, 1] 
       }}
     >
-      {/* Top controls */}
       <div className="welcome-screen__controls">
         <div className="org-logo">
           <img src="/static/bda.webp" alt="BDA Logo" />
@@ -85,7 +84,6 @@ export function WelcomeScreen({ onStart, soundEnabled, onToggleSound, playSound 
         </button>
       </div>
 
-      {/* Main content */}
       <div className="welcome-screen__content">
         <AnimatePresence mode="wait" custom={direction}>
           {!showTutorial ? (

@@ -6,8 +6,6 @@ export function useSound(enabled: boolean) {
   const soundsRef = useRef<Record<string, Howl>>({});
 
   useEffect(() => {
-    const audioCtx = new AudioContext();
-
     function createToneBlob(freq: number, duration: number, type: OscillatorType = 'sine'): Promise<string> {
       return new Promise((resolve) => {
         const offlineCtx = new OfflineAudioContext(1, 44100 * duration, 44100);
@@ -91,14 +89,15 @@ export function useSound(enabled: boolean) {
           clap: new Howl({ src: [clapUrl], volume: 0.5 }),
           result: new Howl({ src: [resultUrl], volume: 0.5 }),
         };
-      } catch {}
+      } catch (error) {
+        console.error('Failed to initialize sounds:', error);
+      }
     }
 
     initSounds();
 
     return () => {
       Object.values(soundsRef.current).forEach((s) => s.unload());
-      audioCtx.close();
     };
   }, []);
 
