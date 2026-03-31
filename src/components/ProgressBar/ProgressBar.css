@@ -1,0 +1,91 @@
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.game-screen__top .progress-bar {
+  max-width: 100%;
+  margin: 0;
+}
+
+.progress-bar__strip {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 6px;
+  padding: 5px 0;
+  border: 1px solid rgba(255, 215, 0, 0.18);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar__sprockets {
+  height: 7px;
+  padding: 0 12px;
+  background-image: radial-gradient(
+    rgba(255, 215, 0, 0.15) 1px, 
+    transparent 0
+  );
+  background-size: 14px 100%;
+  background-repeat: repeat-x;
+  opacity: 0.6;
+}
+
+.progress-bar__track {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.07);
+  margin: 3px 12px;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #b38728, #fcf6ba, #FFD700);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+@media (max-width: 360px) {
+  .game-screen__top .progress-bar__sprockets {
+    display: none;
+  }
+}
+
+@media (max-height: 520px) {
+  .progress-bar__sprockets {
+    display: none;
+  }
+  .progress-bar__track {
+    margin: 0 10px;
+    height: 4px;
+  }
+  .progress-bar__strip {
+    padding: 4px 0;
+  }
+}
+
+.progress-bar__text {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.25em;
+  background: linear-gradient(180deg,
+    #fffbe0 0%,
+    #ffd700 25%,
+    #b8860b 50%,
+    #ffd700 72%,
+    #fffbe0 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
+}

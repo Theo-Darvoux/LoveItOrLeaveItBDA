@@ -1,0 +1,26 @@
+.card-stack {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  --card-h: clamp(280px, 54dvh, 510px);
+  width: min(82vw, 340px, calc(var(--card-h) * 2 / 3));
+  aspect-ratio: 2 / 3;
+  max-height: var(--card-h);
+}
+
+@media (min-width: 768px) {
+  .card-stack {
+    --card-h: clamp(400px, 64dvh, 580px);
+    width: min(55vw, 390px, calc(var(--card-h) * 2 / 3));
+  }
+}
+
+@media (max-height: 520px) {
+  .card-stack {
+    --card-h: clamp(160px, 52dvh, 300px);
+    width: min(50vw, 240px, calc(var(--card-h) * 2 / 3));
+  }
+}

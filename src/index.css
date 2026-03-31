@@ -1,0 +1,77 @@
+:root {
+  --gold: #FFD700;
+  --theater-black: #0d0d0d;
+  --deep-navy: #1a1a2e;
+  --red-curtain: #8b0000;
+  --spotlight-warm: #fff8e7;
+  --love-color: #FFD700;
+  --leave-color: #ff3b5c;
+  --unknown-color: #4da6ff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: var(--theater-black);
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100dvh;
+  min-height: 100svh;
+}
+
+#root {
+  min-height: 100dvh;
+  min-height: 100svh;
+}
+
+.app {
+  position: relative;
+  min-height: 100dvh;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swipe-card, .action-btn {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    overscroll-behavior-y: none;
+  }
+}

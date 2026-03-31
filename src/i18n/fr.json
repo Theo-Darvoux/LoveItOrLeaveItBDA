@@ -1,0 +1,183 @@
+{
+  "app": {
+    "title": "Love it or Leave it",
+    "subtitle": "Découvrez votre âme de cinéphile",
+    "start": "Lancer le Show",
+    "credit": "Développé par {{name}}",
+    "playAgain": "Rejouer",
+    "share": "Partager mon Profil",
+    "download": "Télécharger l'image",
+    "soundOn": "Son ON",
+    "soundOff": "Son OFF",
+    "progress": "{{current}} / {{total}}",
+    "tutorial": {
+      "count": "{{count}} FILMS",
+      "title": "COMMENT JOUER",
+      "labelLove": "LOVE IT",
+      "swipeRight": "Glisser à droite",
+      "labelLeave": "LEAVE IT",
+      "swipeLeft": "Glisser à gauche",
+      "labelUnknown": "CONNAIS PAS",
+      "swipeUp": "Glisser en haut",
+      "or": "ou utilisez les boutons",
+      "ready": "Lancer le Show",
+      "back": "Retour"
+    },
+    "result": {
+      "yourProfile": "Votre Profil Cinéma",
+      "youAre": "Vous êtes...",
+      "loved": "Aimés",
+      "left": "Rejetés",
+      "unknown": "Inconnus",
+      "topGenres": "Vos Genres Préférés",
+      "match": "{{percentage}}% de correspondance",
+      "shareText": "J'ai obtenu « {{profile}} » sur Love it or Leave it ! Et toi, quel est ton profil cinéma ?"
+    }
+  },
+  "genres": {
+    "action": "Action",
+    "comedy": "Comédie",
+    "horror": "Horreur",
+    "sci-fi": "Science-Fiction",
+    "romance": "Romance",
+    "drama": "Drame",
+    "animation": "Animation",
+    "thriller": "Thriller"
+  },
+  "swipe": {
+    "love": "LOVE IT",
+    "leave": "LEAVE IT",
+    "unknown": "CONNAIS PAS"
+  },
+  "movies": {
+    "star_wars": "Star-Wars",
+    "et": "E.T. L'extraterrestre",
+    "bttf": "Retour vers le futur",
+    "space_odyssey": "2001 l'odyssée de l'espace",
+    "interstellar": "Interstellar",
+    "matrix": "The Matrix",
+    "alien": "Alien",
+    "harry_potter": "Harry Potter",
+    "mary_poppins": "Mary Poppins",
+    "pirates_caraibes": "Pirates des Caraïbes",
+    "histoire_sans_fin": "L'Histoire sans fin",
+    "lotr": "Le Seigneur des Anneaux",
+    "hunger_games": "Hunger Games",
+    "narnia": "Le Monde de Narnia",
+    "malefique": "Maléfique",
+    "grande_vadrouille": "La Grande Vadrouille",
+    "bienvenue_chtis": "Bienvenue chez les Ch'tis",
+    "les_profs": "Les Profs",
+    "cheri_retreci_gosses": "Chéri, j'ai rétréci les gosses",
+    "oss_117": "OSS 117",
+    "tour_montparnasse": "La Tour Montparnasse Infernale",
+    "aile_ou_cuisse": "L'Aile ou la Cuisse",
+    "brice_de_nice": "Brice de Nice",
+    "titanic": "Titanic",
+    "notting_hill": "Coup de foudre à Notting Hill",
+    "in_the_mood_for_love": "In the Mood for Love",
+    "demoiselles_rochefort": "Les Demoiselles de Rochefort",
+    "la_la_land": "La La Land",
+    "peau_d_ane": "Peau d'âne",
+    "mamma_mia": "Mamma Mia!",
+    "melodie_bonheur": "La Mélodie du bonheur",
+    "indiana_jones": "Indiana Jones",
+    "forrest_gump": "Forrest Gump",
+    "itineraire_enfant_gate": "Itinéraire d'un enfant gâté",
+    "mission_impossible": "Mission Impossible",
+    "hatari": "Hatari!",
+    "jumanji": "Jumanji",
+    "karate_kid": "Karaté Kid",
+    "james_bond": "James Bond",
+    "your_name": "Your Name",
+    "chateau_ciel": "Le Château dans le ciel",
+    "nausicaa": "Nausicaä de la vallée du vent",
+    "roi_lion": "Le Roi Lion",
+    "toy_story": "Toy Story",
+    "mulan": "Mulan",
+    "shrek": "Shrek",
+    "kung_fu_panda": "Kung Fu Panda",
+    "silence_agneaux": "Le Silence des agneaux",
+    "fenetre_sur_cour": "Fenêtre sur cour",
+    "ca": "Ça",
+    "shining": "Shining",
+    "dents_mer": "Les Dents de la mer",
+    "souviens_toi": "Souviens-toi... l'été dernier",
+    "parrain": "Le Parrain",
+    "m_maudit": "M le maudit",
+    "imitation_game": "The Imitation Game",
+    "liste_schindler": "La Liste de Schindler",
+    "gladiator": "Gladiator",
+    "oppenheimer": "Oppenheimer",
+    "figures_ombre": "Les Figures de l'ombre",
+    "dunkerque": "Dunkerque",
+    "ouest_sauvage": "Il était une fois dans l'ouest",
+    "z_film": "Z"
+  },
+  "profiles": {
+    "actionHero": {
+      "title": "Le Héros d'Action",
+      "description": "Vous vivez pour le grand spectacle. Explosions, poursuites, duels épiques — si ça fait trembler toute la salle, vous prenez votre billet."
+    },
+    "comedyLegend": {
+      "title": "La Légende de la Comédie",
+      "description": "La vie est trop courte pour ne pas rire. Vous pouvez citer des films entiers de mémoire et le meilleur remède est une réplique parfaite."
+    },
+    "horrorMaster": {
+      "title": "Le Maître de l'Horreur",
+      "description": "Pendant que les autres se cachent, vous vous penchez en avant. Vous trouvez de la beauté dans l'obscurité et les frissons."
+    },
+    "romanceDreamer": {
+      "title": "Le Rêveur Romantique",
+      "description": "Vous croyez à l'amour de cinéma — les grands gestes et les baisers sous la pluie. Votre cœur est un écran géant."
+    },
+    "dramaCritic": {
+      "title": "Le Critique de Drame",
+      "description": "Vous voyez au-delà de la surface. Profondeur des personnages et commentaire social — vous appréciez le cinéma comme un art."
+    },
+    "animationFan": {
+      "title": "Le Fan d'Animation",
+      "description": "Vous savez que l'animation n'est pas que pour les enfants. Vous appréciez l'art de chaque image, du dessin au CGI."
+    },
+    "thrillerAddict": {
+      "title": "L'Accro au Thriller",
+      "description": "Vous adorez être au bord de votre siège. Retournements de situation et suspense — vous voulez qu'on vous retourne le cerveau."
+    },
+    "sciFiPioneer": {
+      "title": "Le Pionnier de la SF",
+      "description": "Vous regardez toujours vers l'horizon. Des galaxies lointaines aux dystopies futures, vous aimez explorer le 'possible'."
+    },
+    "epicAdventurer": {
+      "title": "L'Aventurier Épique",
+      "description": "Vous voulez tout : de l'échelle grandiose, des quêtes héroïques et un soupçon de fantaisie. Prêt à sauver le monde !"
+    },
+    "darkPhilosopher": {
+      "title": "Le Philosophe Obscur",
+      "description": "Attiré par le complexe et le macabre. Vous ne voulez pas juste avoir peur ; vous voulez être mis au défi par les ombres."
+    },
+    "nostalgicSoul": {
+      "title": "L'Âme Nostalgique",
+      "description": "Vous trouvez du réconfort dans les classiques. Votre film idéal ressemble à un câlin chaleureux de votre enfance."
+    },
+    "tensionExpert": {
+      "title": "L'Expert en Tension",
+      "description": "Maître du suspense lent. Vous appréciez l'angoisse qui monte et le souffle coupé avant la révélation finale."
+    },
+    "cosmicExplorer": {
+      "title": "L'Explorateur Cosmique",
+      "description": "L'univers est votre terrain de jeu. Vous aimez l'intersection entre gadgets high-tech et conflits stellaires."
+    },
+    "feelGoodGuru": {
+      "title": "Le Gourou du Feel-Good",
+      "description": "Vous êtes là pour les bonnes ondes. Si un film vous laisse avec un sourire et une chanson en tête, c'est gagné."
+    },
+    "humanistSpirit": {
+      "title": "L'Esprit Humaniste",
+      "description": "Ému par la condition humaine. Vous valorisez l'empathie, la connexion et les petits moments qui nous définissent."
+    },
+    "chaosConnoisseur": {
+      "title": "Le Connaisseur du Chaos",
+      "description": "Vous aimez les sensations fortes. Une énergie débordante, un humour tranchant et des virages imprévisibles."
+    }
+  }
+}

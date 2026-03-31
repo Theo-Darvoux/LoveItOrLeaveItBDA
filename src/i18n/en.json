@@ -1,0 +1,183 @@
+{
+  "app": {
+    "title": "Love it or Leave it",
+    "subtitle": "Discover your cinema soul",
+    "start": "Start the Show",
+    "credit": "Designed & Developed by {{name}}",
+    "playAgain": "Play Again",
+    "share": "Share My Profile",
+    "download": "Download Image",
+    "soundOn": "Sound ON",
+    "soundOff": "Sound OFF",
+    "progress": "{{current}} / {{total}}",
+    "tutorial": {
+      "count": "{{count}} MOVIES",
+      "title": "HOW TO PLAY",
+      "labelLove": "Love it",
+      "swipeRight": "Right Swipe",
+      "labelLeave": "Leave it",
+      "swipeLeft": "Left Swipe",
+      "labelUnknown": "Not sure",
+      "swipeUp": "Up Swipe",
+      "or": "or use the buttons below",
+      "ready": "Start the Show",
+      "back": "Go Back"
+    },
+    "result": {
+      "yourProfile": "Your Cinema Profile",
+      "youAre": "You are...",
+      "loved": "Loved",
+      "left": "Left",
+      "unknown": "Unknown",
+      "topGenres": "Your Top Genres",
+      "match": "{{percentage}}% match",
+      "shareText": "I got \"{{profile}}\" on Love it or Leave it! What's YOUR cinema profile?"
+    }
+  },
+  "genres": {
+    "action": "Action",
+    "comedy": "Comedy",
+    "horror": "Horror",
+    "sci-fi": "Sci-Fi",
+    "romance": "Romance",
+    "drama": "Drama",
+    "animation": "Animation",
+    "thriller": "Thriller"
+  },
+  "swipe": {
+    "love": "LOVE IT",
+    "leave": "LEAVE IT",
+    "unknown": "DON'T KNOW"
+  },
+  "movies": {
+    "star_wars": "Star Wars",
+    "et": "E.T. the Extra-Terrestrial",
+    "bttf": "Back to the Future",
+    "space_odyssey": "2001: A Space Odyssey",
+    "interstellar": "Interstellar",
+    "matrix": "The Matrix",
+    "alien": "Alien",
+    "harry_potter": "Harry Potter",
+    "mary_poppins": "Mary Poppins",
+    "pirates_caraibes": "Pirates of the Caribbean",
+    "histoire_sans_fin": "The NeverEnding Story",
+    "lotr": "The Lord of the Rings",
+    "hunger_games": "The Hunger Games",
+    "narnia": "The Chronicles of Narnia",
+    "malefique": "Maleficent",
+    "grande_vadrouille": "La Grande Vadrouille",
+    "bienvenue_chtis": "Bienvenue chez les Ch'tis",
+    "les_profs": "Serial Teachers",
+    "cheri_retreci_gosses": "Honey, I Shrunk the Kids",
+    "oss_117": "OSS 117",
+    "tour_montparnasse": "Don't Die Too Hard!",
+    "aile_ou_cuisse": "The Wing or the Thigh",
+    "brice_de_nice": "Brice de Nice",
+    "titanic": "Titanic",
+    "notting_hill": "Notting Hill",
+    "in_the_mood_for_love": "In the Mood for Love",
+    "demoiselles_rochefort": "The Young Girls of Rochefort",
+    "la_la_land": "La La Land",
+    "peau_d_ane": "Donkey Skin",
+    "mamma_mia": "Mamma Mia!",
+    "melodie_bonheur": "The Sound of Music",
+    "indiana_jones": "Indiana Jones",
+    "forrest_gump": "Forrest Gump",
+    "itineraire_enfant_gate": "Itinerary of a Spoiled Child",
+    "mission_impossible": "Mission: Impossible",
+    "hatari": "Hatari!",
+    "jumanji": "Jumanji",
+    "karate_kid": "The Karate Kid",
+    "james_bond": "James Bond",
+    "your_name": "Your Name",
+    "chateau_ciel": "Castle in the Sky",
+    "nausicaa": "Nausicaä of the Valley of the Wind",
+    "roi_lion": "The Lion King",
+    "toy_story": "Toy Story",
+    "mulan": "Mulan",
+    "shrek": "Shrek",
+    "kung_fu_panda": "Kung Fu Panda",
+    "silence_agneaux": "The Silence of the Lambs",
+    "fenetre_sur_cour": "Rear Window",
+    "ca": "It",
+    "shining": "The Shining",
+    "dents_mer": "Jaws",
+    "souviens_toi": "I Know What You Did Last Summer",
+    "parrain": "The Godfather",
+    "m_maudit": "M",
+    "imitation_game": "The Imitation Game",
+    "liste_schindler": "Schindler's List",
+    "gladiator": "Gladiator",
+    "oppenheimer": "Oppenheimer",
+    "figures_ombre": "Hidden Figures",
+    "dunkerque": "Dunkirk",
+    "ouest_sauvage": "Once Upon a Time in the West",
+    "z_film": "Z"
+  },
+  "profiles": {
+    "actionHero": {
+      "title": "The Action Hero",
+      "description": "You live for the big screen spectacle. Explosions, car chases, epic showdowns — if it makes the whole theater shake, you're buying a ticket."
+    },
+    "comedyLegend": {
+      "title": "The Comedy Legend",
+      "description": "Life's too short not to laugh. You can quote entire movies from memory and you believe the best medicine is a perfectly timed punchline."
+    },
+    "horrorMaster": {
+      "title": "The Horror Master",
+      "description": "While others hide behind their popcorn, you lean in. You find beauty in the dark, and a good scare is your idea of a perfect Friday night."
+    },
+    "romanceDreamer": {
+      "title": "The Romance Dreamer",
+      "description": "You believe in movie love — the grand gestures, the rain-soaked kisses, the boombox held high. Your heart is an open cinema."
+    },
+    "dramaCritic": {
+      "title": "The Drama Critic",
+      "description": "You see past the surface. Character depth, social commentary, breathtaking cinematography — you appreciate cinema as an art form."
+    },
+    "animationFan": {
+      "title": "The Animation Fan",
+      "description": "You know that animation isn't just for kids. From hand-drawn masterpieces to cutting-edge CGI, you appreciate the artistry of every frame."
+    },
+    "thrillerAddict": {
+      "title": "The Thriller Addict",
+      "description": "You crave the edge-of-your-seat moments. Plot twists, cat-and-mouse games, and unreliable narrators — you want your mind blown."
+    },
+    "sciFiPioneer": {
+      "title": "The Sci-Fi Pioneer",
+      "description": "You're always looking toward the horizon. From distant galaxies to near-future dystopias, you love exploring what 'could be'."
+    },
+    "epicAdventurer": {
+      "title": "The Epic Adventurer",
+      "description": "You want it all: grand scale, heroic journeys, and a touch of whimsy. You're the first to volunteer for a quest to save the world."
+    },
+    "darkPhilosopher": {
+      "title": "The Dark Philosopher",
+      "description": "You're drawn to the complex and the macabre. You don't just want to be scared; you want to be challenged by the shadows."
+    },
+    "nostalgicSoul": {
+      "title": "The Nostalgic Soul",
+      "description": "You find comfort in the classics and the colorful. Your ideal movie feels like a warm hug from your childhood."
+    },
+    "tensionExpert": {
+      "title": "The Tension Expert",
+      "description": "You're a master of the slow burn. You appreciate the mounting dread and the sharp intake of breath before the final reveal."
+    },
+    "cosmicExplorer": {
+      "title": "The Cosmic Explorer",
+      "description": "The universe is your playground. You love the intersection of high-tech gadgets and high-stakes interstellar conflict."
+    },
+    "feelGoodGuru": {
+      "title": "The Feel-Good Guru",
+      "description": "You're here for the vibes. If a movie leaves you with a smile on your face and a song in your heart, it's a winner."
+    },
+    "humanistSpirit": {
+      "title": "The Humanist Spirit",
+      "description": "You're moved by the human condition. You value empathy, connection, and the small, quiet moments that define us."
+    },
+    "chaosConnoisseur": {
+      "title": "The Chaos Connoisseur",
+      "description": "You love a wild ride. High energy, sharp wit, and unpredictable turns keep you coming back for more."
+    }
+  }
+}
