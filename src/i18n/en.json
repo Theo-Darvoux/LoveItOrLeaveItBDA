@@ -178,6 +178,18 @@
     "chaosConnoisseur": {
       "title": "The Chaos Connoisseur",
       "description": "You love a wild ride. High energy, sharp wit, and unpredictable turns keep you coming back for more."
+    },
+    "movieBuff": {
+      "title": "The Ultimate Movie Buff",
+      "description": "You love EVERYTHING. Your heart is a wide-open cinema and you find joy in every single frame. A true lover of the seventh art!"
+    },
+    "hardToPlease": {
+      "title": "The Hard to Please",
+      "description": "You've seen it all, and you're not easily impressed. You have extremely high standards, and only the absolute best makes the cut."
+    },
+    "cinemaNewbie": {
+      "title": "The Cinema Newbie",
+      "description": "A whole world of stories is waiting for you! You're at the very beginning of your cinematic journey, and that's the most exciting place to be."
     }
   }
 }

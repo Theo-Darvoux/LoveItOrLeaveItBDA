@@ -178,6 +178,18 @@
     "chaosConnoisseur": {
       "title": "Le Connaisseur du Chaos",
       "description": "Vous aimez les sensations fortes. Une énergie débordante, un humour tranchant et des virages imprévisibles."
+    },
+    "movieBuff": {
+      "title": "L'Amoureux du Cinéma",
+      "description": "Vous adorez TOUT. Votre cœur est un cinéma ouvert et vous trouvez de la joie dans chaque plan. Un vrai passionné du septième art !"
+    },
+    "hardToPlease": {
+      "title": "L'Exigeant",
+      "description": "Vous avez tout vu, et on ne vous impressionne pas facilement. Vous avez des standards très élevés et seul le meilleur passe."
+    },
+    "cinemaNewbie": {
+      "title": "Le Nouveau Venu",
+      "description": "Un monde entier d'histoires vous attend ! Vous êtes au tout début de votre voyage cinématographique, et c'est passionnant."
     }
   }
 }

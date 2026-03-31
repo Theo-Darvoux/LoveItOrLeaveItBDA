@@ -1,7 +1,6 @@
-import { useRef, useCallback, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import html2canvas from 'html2canvas';
 import { CinemaProfile, GameStats } from '../../types';
 import './ProfileResult.css';
 
@@ -123,39 +122,6 @@ export function ProfileResult({ profile, stats, onRestart }: ProfileResultProps)
     Math.floor(Math.random() * 999999).toString().padStart(6, '0')
   );
 
-  const handleShare = useCallback(async () => {
-    if (!cardRef.current) return;
-
-    try {
-      const canvas = await html2canvas(cardRef.current, {
-        backgroundColor: '#04030a',
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-      });
-
-      canvas.toBlob(async (blob) => {
-        if (!blob) return;
-
-        const file = new File([blob], 'my-cinema-profile.png', { type: 'image/png' });
-
-        if (navigator.share && navigator.canShare?.({ files: [file] })) {
-          await navigator.share({
-            text: t('app.result.shareText', { profile: t(profile.titleKey) }),
-            files: [file],
-          });
-        } else {
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'my-cinema-profile.png';
-          a.click();
-          URL.revokeObjectURL(url);
-        }
-      }, 'image/png');
-    } catch { }
-  }, [profile, t]);
-
   return (
     <div className="profile-result">
       <motion.div
@@ -166,7 +132,7 @@ export function ProfileResult({ profile, stats, onRestart }: ProfileResultProps)
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
-
+        {/* ... existing card content ... */}
         <div className="profile-card__header">
           <motion.div
             className="profile-card__icon-container"
@@ -224,7 +190,10 @@ export function ProfileResult({ profile, stats, onRestart }: ProfileResultProps)
         </div>
 
         <div className="profile-card__footer">
-          <div className="profile-card__brand">LOVE IT OR LEAVE IT</div>
+          <div className="profile-card__brand">
+            <img src="/static/bda.webp" alt="BDA Logo" className="footer-logo" />
+            LOVE IT OR LEAVE IT
+          </div>
           <div className="profile-card__serial">№ {serialNumber}</div>
         </div>
       </motion.div>
@@ -235,12 +204,18 @@ export function ProfileResult({ profile, stats, onRestart }: ProfileResultProps)
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
       >
-        <button className="profile-result__btn profile-result__btn--share" onClick={handleShare}>
-          {t('app.share')}
-        </button>
-        <button className="profile-result__btn profile-result__btn--restart" onClick={onRestart}>
-          {t('app.playAgain')}
-        </button>
+        <motion.button
+          className="welcome-screen__start-btn profile-result__ticket-btn"
+          onClick={onRestart}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ duration: 0.2 }}
+        >
+          <span className="ticket-decoration ticket-decoration--left">№ {serialNumber}</span>
+          <span className="btn-text">{t('app.playAgain')}</span>
+          <span className="ticket-decoration ticket-decoration--right">ADMIT ONE</span>
+          <div className="btn-shine" />
+        </motion.button>
       </motion.div>
     </div>
   );

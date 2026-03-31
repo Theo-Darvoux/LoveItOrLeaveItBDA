@@ -146,4 +146,32 @@ export const profiles: CinemaProfile[] = [
     color: '#fdcb6e',
     genreAffinities: { action: 0.8, comedy: 0.8, thriller: 0.4 },
   },
+  // Special Profiles
+  {
+    id: 'movie-buff',
+    titleKey: 'profiles.movieBuff.title',
+    descriptionKey: 'profiles.movieBuff.description',
+    emoji: 'star',
+    icon: 'drama',
+    color: '#ffd700',
+    genreAffinities: {},
+  },
+  {
+    id: 'hard-to-please',
+    titleKey: 'profiles.hardToPlease.title',
+    descriptionKey: 'profiles.hardToPlease.description',
+    emoji: 'expressionless',
+    icon: 'drama',
+    color: '#95a5a6',
+    genreAffinities: {},
+  },
+  {
+    id: 'cinema-newbie',
+    titleKey: 'profiles.cinemaNewbie.title',
+    descriptionKey: 'profiles.cinemaNewbie.description',
+    emoji: 'eyes',
+    icon: 'drama',
+    color: '#7f8c8d',
+    genreAffinities: {},
+  },
 ];
