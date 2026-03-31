@@ -1,0 +1,9 @@
+services:
+  prod:
+    build: .
+    container_name: love-it-leave-it-prod
+    ports:
+      - "9001:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production

@@ -26,7 +26,7 @@ const initialState: GameState = {
   choices: [],
   profile: null,
   stats: null,
-  soundEnabled: localStorage.getItem('soundEnabled') !== 'false',
+  soundEnabled: typeof window !== 'undefined' ? localStorage.getItem('soundEnabled') !== 'false' : true,
 };
 
 function gameReducer(state: GameState, action: GameAction): GameState {
@@ -85,7 +85,9 @@ function gameReducer(state: GameState, action: GameAction): GameState {
 
     case 'TOGGLE_SOUND': {
       const newSoundEnabled = !state.soundEnabled;
-      localStorage.setItem('soundEnabled', String(newSoundEnabled));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('soundEnabled', String(newSoundEnabled));
+      }
       return { ...state, soundEnabled: newSoundEnabled };
     }
 
