@@ -80,7 +80,10 @@ export function calculateProfile(
   const sortedGenres = Object.entries(normalizedScores)
     .sort(([, a], [, b]) => (b ?? 0) - (a ?? 0))
     .slice(0, 3)
-    .map(([g]) => g as Genre);
+    .map(([g, score]) => ({
+      genre: g as Genre,
+      score: score ?? 0,
+    }));
 
   const matchPercentage = Math.round(bestScore * 100);
 

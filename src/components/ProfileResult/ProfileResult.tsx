@@ -175,14 +175,14 @@ export function ProfileResult({ profile, stats, onRestart }: ProfileResultProps)
 
           <div className="profile-card__genres">
             <div className="profile-card__genre-bars">
-              {stats.topGenres.map((genre, i) => (
-                <div key={genre} className="profile-card__genre-bar">
-                  <span className="profile-card__genre-name">{t(`genres.${genre}`)}</span>
+              {stats.topGenres.map((gs, i) => (
+                <div key={gs.genre} className="profile-card__genre-bar">
+                  <span className="profile-card__genre-name">{t(`genres.${gs.genre}`)}</span>
                   <div className="profile-card__genre-track">
                     <motion.div
                       className="profile-card__genre-fill"
                       initial={{ width: 0 }}
-                      animate={{ width: `${100 - i * 20}%` }}
+                      animate={{ width: `${Math.max(5, gs.score * 100)}%` }}
                       transition={{ delay: 0.4 + i * 0.1, duration: 1, ease: "circOut" }}
                       style={{ background: profile.color, height: '100%' }}
                     />

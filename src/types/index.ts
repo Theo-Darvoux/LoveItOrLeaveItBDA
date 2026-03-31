@@ -26,11 +26,16 @@ export interface CinemaProfile {
   genreAffinities: Partial<Record<Genre, number>>;
 }
 
+export interface GenreScore {
+  genre: Genre;
+  score: number; // 0 to 1
+}
+
 export interface GameStats {
   totalLoved: number;
   totalLeft: number;
   totalUnknown: number;
-  topGenres: Genre[];
+  topGenres: GenreScore[];
   matchPercentage: number;
 }
 

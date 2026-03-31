@@ -5,8 +5,10 @@ export function ImagePreloader() {
   useEffect(() => {
     const preloadImages = () => {
       movies.forEach((movie) => {
-        const img = new Image();
-        img.src = movie.posterUrl;
+        if (movie.posterUrl) {
+          const img = new Image();
+          img.src = movie.posterUrl;
+        }
       });
       
       const logo = new Image();
