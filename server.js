@@ -28,8 +28,13 @@ async function createServer() {
     )
   }
 
-  app.get(/.*/, async (req, res, next) => {
+  app.get(/.*/, async (req, res) => {
     const url = req.originalUrl
+    
+    // Simple language detection
+    const acceptLang = req.get('Accept-Language') || 'fr'
+    const lang = acceptLang.split(',')[0].split('-')[0]
+    const finalLang = ['en', 'fr'].includes(lang) ? lang : 'fr'
 
     try {
       let template, render
@@ -42,16 +47,19 @@ async function createServer() {
         render = (await import('./dist/server/entry-server.js')).render
       }
 
-      const { html: appHtml } = await render(url)
+      const { html: appHtml } = await render(url, finalLang)
 
-      const html = template.replace(`<!--ssr-outlet-->`, appHtml)
+      let html = template.replace(`<!--ssr-outlet-->`, appHtml)
+      
+      // Update HTML lang attribute
+      html = html.replace(/<html lang="[^"]*">/, `<html lang="${finalLang}">`)
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {
       if (process.env.NODE_ENV !== 'production') {
         vite.ssrFixStacktrace(e)
       }
-      console.log(e.stack)
+      console.error(e.stack)
       res.status(500).end(e.stack)
     }
   })
