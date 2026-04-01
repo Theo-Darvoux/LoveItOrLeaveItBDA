@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import VERTEX_SHADER from '../shaders/cinema.vert?raw';
-import FRAGMENT_SHADER from '../shaders/cinema.frag?raw';
+import VERTEX_SHADER from '../../shaders/cinema.vert?raw';
+import FRAGMENT_SHADER from '../../shaders/cinema.frag?raw';
 
 export function CinemaBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

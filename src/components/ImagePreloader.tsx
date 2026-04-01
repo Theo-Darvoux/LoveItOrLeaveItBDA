@@ -1,6 +1,24 @@
 import { useEffect } from 'react';
 import { movies } from '../data/movies';
 
+interface IdleDeadline {
+  readonly didTimeout: boolean;
+  timeRemaining(): number;
+}
+
+type IdleRequestCallback = (deadline: IdleDeadline) => void;
+
+interface IdleRequestOptions {
+  timeout?: number;
+}
+
+declare global {
+  interface Window {
+    requestIdleCallback: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+    cancelIdleCallback: (handle: number) => void;
+  }
+}
+
 export function ImagePreloader() {
   useEffect(() => {
     const preloadImages = () => {
@@ -16,8 +34,7 @@ export function ImagePreloader() {
     };
 
     if ('requestIdleCallback' in window) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as any).requestIdleCallback(() => preloadImages());
+      window.requestIdleCallback(() => preloadImages());
     } else {
       setTimeout(preloadImages, 1000);
     }

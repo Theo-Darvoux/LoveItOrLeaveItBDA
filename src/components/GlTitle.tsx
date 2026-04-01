@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
-import vertexShader from './shaders/title.vert?raw';
-import fragmentShader from './shaders/title.frag?raw';
+import vertexShader from '../shaders/title.vert?raw';
+import fragmentShader from '../shaders/title.frag?raw';
 
 export function GlTitle() {
   const containerRef = useRef<HTMLDivElement>(null);
