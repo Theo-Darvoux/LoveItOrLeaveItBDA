@@ -13,6 +13,7 @@ interface GameScreenProps {
   currentMovie: Movie | null;
   nextMovie: Movie | null;
   currentIndex: number;
+  isFinished: boolean;
   onSwipe: (movieId: string, direction: SwipeDirection) => void;
   onFinish: () => void;
   soundEnabled: boolean;
@@ -24,6 +25,7 @@ export function GameScreen({
   currentMovie,
   nextMovie,
   currentIndex,
+  isFinished,
   onSwipe,
   onFinish,
   soundEnabled,
@@ -33,14 +35,15 @@ export function GameScreen({
   const { t, i18n } = useTranslation();
   const lastSwipeTime = useRef<number>(0);
   const cardStackRef = useRef<SwipeCardRef>(null);
+
   useEffect(() => {
-    if (!currentMovie && !nextMovie) {
+    if (isFinished) {
       const timer = setTimeout(() => {
         onFinish();
-      }, 500);
+      }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [currentMovie, nextMovie, onFinish]);
+  }, [isFinished, onFinish]);
 
   const handleSwipe = useCallback((direction: SwipeDirection) => {
     if (!currentMovie) return;
@@ -171,7 +174,7 @@ export function GameScreen({
         <ActionButtons
           onAction={handleButtonAction}
           labels={{ left: t('swipe.leave'), up: '?', right: t('swipe.love') }}
-          disabled={!currentMovie}
+          disabled={!currentMovie || isFinished}
         />
       </motion.div>
     </motion.div>

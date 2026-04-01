@@ -49,4 +49,5 @@ export interface GameState {
   stats: GameStats | null;
   soundEnabled: boolean;
   shuffledMovieIds: string[];
+  isFinished: boolean;
 }

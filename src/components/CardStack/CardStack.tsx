@@ -13,7 +13,7 @@ interface CardStackProps {
 export const CardStack = forwardRef<SwipeCardRef, CardStackProps>(({ currentMovie, nextMovie, onSwipe }, ref) => {
   return (
     <div className="card-stack">
-      <AnimatePresence initial={false}>
+      <AnimatePresence>
         {nextMovie && (
           <SwipeCard
             key={nextMovie.id}

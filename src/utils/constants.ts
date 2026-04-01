@@ -1,6 +1,7 @@
 import { movies } from '../data/movies';
 
-export const TOTAL_MOVIES = movies.length;
+export const TOTAL_MOVIES = 30;
+export const ALL_MOVIES_COUNT = movies.length;
 export const SWIPE_THRESHOLD_X = 100;
 export const SWIPE_THRESHOLD_Y = 80;
 export const VELOCITY_THRESHOLD = 500;

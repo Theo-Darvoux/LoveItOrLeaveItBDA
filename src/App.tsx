@@ -36,6 +36,7 @@ function App() {
             currentMovie={currentMovie}
             nextMovie={nextMovie}
             currentIndex={state.currentIndex}
+            isFinished={state.isFinished}
             onSwipe={swipe}
             onFinish={finish}
             soundEnabled={state.soundEnabled}

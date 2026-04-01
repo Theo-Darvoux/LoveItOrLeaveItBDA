@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, memo, forwardRef, useImperativeHandle } from 'react';
+import { useState, useRef, useMemo, memo, forwardRef, useEffect } from 'react';
 import { flushSync } from 'react-dom';
 import {
   motion,
@@ -116,7 +116,8 @@ export const SwipeCard = memo(forwardRef<SwipeCardRef, SwipeCardProps>(({ movie,
   const [exitDirection, setExitDirection] = useState<SwipeDirection | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const [isPresent] = usePresence();
-  const isExiting = !isPresent;
+  // On the last card, AnimatePresence might not be present or behave differently
+  const isExiting = isPresent === false;
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -157,15 +158,27 @@ export const SwipeCard = memo(forwardRef<SwipeCardRef, SwipeCardProps>(({ movie,
     }
   }
 
-  useImperativeHandle(ref, () => ({
-    triggerSwipe: (dir: SwipeDirection) => {
-      if (isExiting) return;
-      flushSync(() => {
-        setExitDirection(dir);
-      });
-      onSwipe(dir);
+  useEffect(() => {
+    const api = {
+      triggerSwipe: (dir: SwipeDirection) => {
+        if (isExiting) return;
+        flushSync(() => {
+          setExitDirection(dir);
+        });
+        requestAnimationFrame(() => {
+          onSwipe(dir);
+        });
+      }
+    };
+
+    if (isTop && !isExiting) {
+      if (typeof ref === 'function') {
+        ref(api);
+      } else if (ref && 'current' in ref) {
+        ref.current = api;
+      }
     }
-  }), [isExiting, onSwipe]);
+  }, [ref, isTop, isExiting, onSwipe]);
 
   const cardVariants = useMemo(() => ({
     behind: { 

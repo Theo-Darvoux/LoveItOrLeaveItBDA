@@ -28,7 +28,8 @@ const initialState: GameState = {
   profile: null,
   stats: null,
   soundEnabled: true,
-  shuffledMovieIds: movies.map(m => m.id),
+  shuffledMovieIds: movies.map(m => m.id).slice(0, TOTAL_MOVIES),
+  isFinished: false,
 };
 
 function gameReducer(state: GameState, action: GameAction): GameState {
@@ -42,16 +43,19 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         profile: null,
         stats: null,
         shuffledMovieIds: action.payload.shuffledMovieIds,
+        isFinished: false,
       };
 
     case 'SWIPE': {
+      if (state.isFinished) return state;
+
       const newChoices = [
         ...state.choices,
         { movieId: action.payload.movieId, direction: action.payload.direction },
       ];
       const newIndex = state.currentIndex + 1;
 
-      if (newIndex >= TOTAL_MOVIES) {
+      if (newIndex >= state.shuffledMovieIds.length) {
         const { profile, stats } = calculateProfile(newChoices, movies);
         return {
           ...state,
@@ -59,6 +63,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
           choices: newChoices,
           profile,
           stats,
+          isFinished: true,
         };
       }
 
@@ -84,6 +89,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         profile: null,
         stats: null,
         shuffledMovieIds: action.payload.shuffledMovieIds,
+        isFinished: false,
       };
 
     case 'TOGGLE_SOUND': {
@@ -115,7 +121,7 @@ export function useGameState() {
   }, []);
 
   const startGame = useCallback(() => {
-    const shuffled = shuffleArray(movies.map(m => m.id));
+    const shuffled = shuffleArray(movies.map(m => m.id)).slice(0, TOTAL_MOVIES);
     dispatch({ type: 'START_GAME', payload: { shuffledMovieIds: shuffled } });
   }, []);
 
@@ -128,7 +134,7 @@ export function useGameState() {
   }, []);
 
   const restart = useCallback(() => {
-    const shuffled = shuffleArray(movies.map(m => m.id));
+    const shuffled = shuffleArray(movies.map(m => m.id)).slice(0, TOTAL_MOVIES);
     dispatch({ type: 'RESTART', payload: { shuffledMovieIds: shuffled } });
   }, []);
 
@@ -136,8 +142,8 @@ export function useGameState() {
     dispatch({ type: 'TOGGLE_SOUND' });
   }, []);
 
-  const currentMovie = state.currentIndex < TOTAL_MOVIES ? moviesById[state.shuffledMovieIds[state.currentIndex]] : null;
-  const nextMovie = state.currentIndex + 1 < TOTAL_MOVIES ? moviesById[state.shuffledMovieIds[state.currentIndex + 1]] : null;
+  const currentMovie = state.currentIndex < state.shuffledMovieIds.length ? moviesById[state.shuffledMovieIds[state.currentIndex]] : null;
+  const nextMovie = state.currentIndex + 1 < state.shuffledMovieIds.length ? moviesById[state.shuffledMovieIds[state.currentIndex + 1]] : null;
 
   return {
     state,
