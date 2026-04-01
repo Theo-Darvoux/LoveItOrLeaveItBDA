@@ -7,18 +7,18 @@ export function calculateProfile(
 ): { profile: CinemaProfile; stats: GameStats } {
   const genreScores: Partial<Record<Genre, number>> = {};
 
-  const totalLoved = choices.filter((c) => c.direction === 'right').length;
-  const totalLeft = choices.filter((c) => c.direction === 'left').length;
-  const totalUnknown = choices.filter((c) => c.direction === 'up').length;
+  let totalLoved = 0;
+  let totalLeft = 0;
+  let totalUnknown = 0;
   const totalMovies = choices.length;
-
-  const lovedRatio = totalMovies > 0 ? totalLoved / totalMovies : 0;
-  const leftRatio = totalMovies > 0 ? totalLeft / totalMovies : 0;
-  const unknownRatio = totalMovies > 0 ? totalUnknown / totalMovies : 0;
 
   const movieMap = new Map(movies.map((m) => [m.id, m]));
 
   for (const choice of choices) {
+    if (choice.direction === 'right') totalLoved++;
+    else if (choice.direction === 'left') totalLeft++;
+    else if (choice.direction === 'up') totalUnknown++;
+
     const movie = movieMap.get(choice.movieId);
     if (!movie) continue;
 
@@ -31,6 +31,10 @@ export function calculateProfile(
       }
     }
   }
+
+  const lovedRatio = totalMovies > 0 ? totalLoved / totalMovies : 0;
+  const leftRatio = totalMovies > 0 ? totalLeft / totalMovies : 0;
+  const unknownRatio = totalMovies > 0 ? totalUnknown / totalMovies : 0;
 
   const maxScore = Math.max(...Object.values(genreScores).map((v) => v ?? 0), 1);
   const normalizedScores: Partial<Record<Genre, number>> = {};

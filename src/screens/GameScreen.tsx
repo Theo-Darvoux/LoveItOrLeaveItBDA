@@ -6,7 +6,7 @@ import { ActionButtons } from '../components/ActionButtons/ActionButtons';
 import { ProgressBar } from '../components/ProgressBar/ProgressBar';
 import { SoundToggleButton } from '../components/SoundToggleButton/SoundToggleButton';
 import { Movie, SwipeDirection } from '../types';
-import { triggerCardSwipe } from '../utils/swipeUtils';
+import { SwipeCardRef } from '../components/SwipeCard/SwipeCard';
 import './screens.css';
 
 interface GameScreenProps {
@@ -32,6 +32,7 @@ export function GameScreen({
 }: GameScreenProps) {
   const { t, i18n } = useTranslation();
   const lastSwipeTime = useRef<number>(0);
+  const cardStackRef = useRef<SwipeCardRef>(null);
   useEffect(() => {
     if (!currentMovie && !nextMovie) {
       const timer = setTimeout(() => {
@@ -57,8 +58,9 @@ export function GameScreen({
     if (now - lastSwipeTime.current < 100) return;
     lastSwipeTime.current = now;
 
-    const swiped = triggerCardSwipe(direction);
-    if (!swiped && currentMovie) {
+    if (cardStackRef.current) {
+      cardStackRef.current.triggerSwipe(direction);
+    } else if (currentMovie) {
       handleSwipe(direction);
     }
   }, [currentMovie, handleSwipe]);
@@ -158,6 +160,7 @@ export function GameScreen({
 
       <motion.div className="game-screen__cards" variants={cardVariants}>
         <CardStack
+          ref={cardStackRef}
           currentMovie={currentMovie}
           nextMovie={nextMovie}
           onSwipe={handleSwipe}

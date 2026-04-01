@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo, memo } from 'react';
+import { useState, useRef, useMemo, memo, forwardRef, useImperativeHandle } from 'react';
 import { flushSync } from 'react-dom';
 import {
   motion,
@@ -18,7 +18,6 @@ import {
   MAX_ROTATION,
   EXIT_DISTANCE,
 } from '../../utils/constants';
-import { SwipeCardElement } from '../../utils/swipeUtils';
 import './SwipeCard.css';
 
 interface SwipeCardProps {
@@ -108,7 +107,11 @@ const CardContent = memo(({ movie, t, isExiting }: { movie: Movie, t: TFunction,
 
 CardContent.displayName = 'CardContent';
 
-export const SwipeCard = memo(({ movie, onSwipe, isTop }: SwipeCardProps) => {
+export interface SwipeCardRef {
+  triggerSwipe: (direction: SwipeDirection) => void;
+}
+
+export const SwipeCard = memo(forwardRef<SwipeCardRef, SwipeCardProps>(({ movie, onSwipe, isTop }, ref) => {
   const { t } = useTranslation();
   const [exitDirection, setExitDirection] = useState<SwipeDirection | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -154,23 +157,15 @@ export const SwipeCard = memo(({ movie, onSwipe, isTop }: SwipeCardProps) => {
     }
   }
 
-  useEffect(() => {
-    const currentRef = cardRef.current as SwipeCardElement | null;
-    if (isTop && currentRef && !isExiting) {
-      currentRef.__triggerSwipe = (dir: SwipeDirection) => {
-        if (currentRef) delete currentRef.__triggerSwipe;
-        flushSync(() => {
-          setExitDirection(dir);
-        });
-        onSwipe(dir);
-      };
+  useImperativeHandle(ref, () => ({
+    triggerSwipe: (dir: SwipeDirection) => {
+      if (isExiting) return;
+      flushSync(() => {
+        setExitDirection(dir);
+      });
+      onSwipe(dir);
     }
-    return () => {
-      if (currentRef) {
-        delete currentRef.__triggerSwipe;
-      }
-    };
-  }, [isTop, onSwipe, isExiting]);
+  }), [isExiting, onSwipe]);
 
   const cardVariants = useMemo(() => ({
     behind: { 
@@ -223,7 +218,7 @@ export const SwipeCard = memo(({ movie, onSwipe, isTop }: SwipeCardProps) => {
       )}
     </motion.div>
   );
-});
+}));
 
 SwipeCard.displayName = 'SwipeCard';
 

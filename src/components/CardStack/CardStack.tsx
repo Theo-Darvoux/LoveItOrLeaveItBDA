@@ -1,5 +1,6 @@
+import { forwardRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { SwipeCard } from '../SwipeCard/SwipeCard';
+import { SwipeCard, SwipeCardRef } from '../SwipeCard/SwipeCard';
 import { Movie, SwipeDirection } from '../../types';
 import './CardStack.css';
 
@@ -9,7 +10,7 @@ interface CardStackProps {
   onSwipe: (direction: SwipeDirection) => void;
 }
 
-export function CardStack({ currentMovie, nextMovie, onSwipe }: CardStackProps) {
+export const CardStack = forwardRef<SwipeCardRef, CardStackProps>(({ currentMovie, nextMovie, onSwipe }, ref) => {
   return (
     <div className="card-stack">
       <AnimatePresence initial={false}>
@@ -27,9 +28,12 @@ export function CardStack({ currentMovie, nextMovie, onSwipe }: CardStackProps) 
             movie={currentMovie}
             onSwipe={onSwipe}
             isTop={true}
+            ref={ref}
           />
         )}
       </AnimatePresence>
     </div>
   );
-}
+});
+
+CardStack.displayName = 'CardStack';

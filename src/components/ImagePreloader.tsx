@@ -19,6 +19,8 @@ declare global {
   }
 }
 
+const preloadedImages: HTMLImageElement[] = [];
+
 export function ImagePreloader() {
   useEffect(() => {
     const preloadImages = () => {
@@ -26,11 +28,13 @@ export function ImagePreloader() {
         if (movie.posterUrl) {
           const img = new Image();
           img.src = movie.posterUrl;
+          preloadedImages.push(img);
         }
       });
       
       const logo = new Image();
       logo.src = '/static/bda.webp';
+      preloadedImages.push(logo);
     };
 
     if ('requestIdleCallback' in window) {
