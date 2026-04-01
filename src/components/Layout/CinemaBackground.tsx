@@ -53,6 +53,7 @@ export function CinemaBackground() {
     const resLoc = gl.getUniformLocation(program, 'u_resolution');
 
     let animationId: number;
+    let isVisible = !document.hidden;
     const startTime = performance.now();
 
     function resize() {
@@ -62,15 +63,22 @@ export function CinemaBackground() {
       gl!.viewport(0, 0, canvas.width, canvas.height);
     }
 
+    function handleVisibilityChange() {
+      isVisible = !document.hidden;
+    }
+
     window.addEventListener('resize', resize);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     resize();
 
     function render() {
-      const time = (performance.now() - startTime) / 1000;
-      gl!.useProgram(program);
-      gl!.uniform1f(timeLoc, time);
-      gl!.uniform2f(resLoc, canvas!.width, canvas!.height);
-      gl!.drawArrays(gl!.TRIANGLES, 0, 6);
+      if (isVisible) {
+        const time = (performance.now() - startTime) / 1000;
+        gl!.useProgram(program);
+        gl!.uniform1f(timeLoc, time);
+        gl!.uniform2f(resLoc, canvas!.width, canvas!.height);
+        gl!.drawArrays(gl!.TRIANGLES, 0, 6);
+      }
       animationId = requestAnimationFrame(render);
     }
 
@@ -79,6 +87,12 @@ export function CinemaBackground() {
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('resize', resize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      
+      gl!.deleteProgram(program);
+      gl!.deleteShader(vs);
+      gl!.deleteShader(fs);
+      gl!.deleteBuffer(buffer);
     };
   }, []);
 

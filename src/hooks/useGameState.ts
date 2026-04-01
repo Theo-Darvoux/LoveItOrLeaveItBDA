@@ -1,14 +1,14 @@
 import { useReducer, useCallback, useEffect } from 'react';
-import { GameState, SwipeDirection, Movie } from '../types';
-import { movies } from '../data/movies';
+import { GameState, SwipeDirection } from '../types';
+import { movies, moviesById } from '../data/movies';
 import { calculateProfile } from '../utils/calculateProfile';
 import { TOTAL_MOVIES } from '../utils/constants';
 
 type GameAction =
-  | { type: 'START_GAME'; payload: { shuffledMovies: Movie[] } }
+  | { type: 'START_GAME'; payload: { shuffledMovieIds: string[] } }
   | { type: 'SWIPE'; payload: { movieId: string; direction: SwipeDirection } }
   | { type: 'FINISH' }
-  | { type: 'RESTART'; payload: { shuffledMovies: Movie[] } }
+  | { type: 'RESTART'; payload: { shuffledMovieIds: string[] } }
   | { type: 'TOGGLE_SOUND' }
   | { type: 'SET_SOUND'; payload: boolean };
 
@@ -28,7 +28,7 @@ const initialState: GameState = {
   profile: null,
   stats: null,
   soundEnabled: true,
-  shuffledMovies: movies,
+  shuffledMovieIds: movies.map(m => m.id),
 };
 
 function gameReducer(state: GameState, action: GameAction): GameState {
@@ -41,7 +41,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         choices: [],
         profile: null,
         stats: null,
-        shuffledMovies: action.payload.shuffledMovies,
+        shuffledMovieIds: action.payload.shuffledMovieIds,
       };
 
     case 'SWIPE': {
@@ -52,7 +52,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       const newIndex = state.currentIndex + 1;
 
       if (newIndex >= TOTAL_MOVIES) {
-        const { profile, stats } = calculateProfile(newChoices, state.shuffledMovies);
+        const { profile, stats } = calculateProfile(newChoices, movies);
         return {
           ...state,
           currentIndex: newIndex,
@@ -83,7 +83,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         choices: [],
         profile: null,
         stats: null,
-        shuffledMovies: action.payload.shuffledMovies,
+        shuffledMovieIds: action.payload.shuffledMovieIds,
       };
 
     case 'TOGGLE_SOUND': {
@@ -115,8 +115,8 @@ export function useGameState() {
   }, []);
 
   const startGame = useCallback(() => {
-    const shuffled = shuffleArray(movies);
-    dispatch({ type: 'START_GAME', payload: { shuffledMovies: shuffled } });
+    const shuffled = shuffleArray(movies.map(m => m.id));
+    dispatch({ type: 'START_GAME', payload: { shuffledMovieIds: shuffled } });
   }, []);
 
   const swipe = useCallback((movieId: string, direction: SwipeDirection) => {
@@ -128,16 +128,16 @@ export function useGameState() {
   }, []);
 
   const restart = useCallback(() => {
-    const shuffled = shuffleArray(movies);
-    dispatch({ type: 'RESTART', payload: { shuffledMovies: shuffled } });
+    const shuffled = shuffleArray(movies.map(m => m.id));
+    dispatch({ type: 'RESTART', payload: { shuffledMovieIds: shuffled } });
   }, []);
 
   const toggleSound = useCallback(() => {
     dispatch({ type: 'TOGGLE_SOUND' });
   }, []);
 
-  const currentMovie = state.currentIndex < TOTAL_MOVIES ? state.shuffledMovies[state.currentIndex] : null;
-  const nextMovie = state.currentIndex + 1 < TOTAL_MOVIES ? state.shuffledMovies[state.currentIndex + 1] : null;
+  const currentMovie = state.currentIndex < TOTAL_MOVIES ? moviesById[state.shuffledMovieIds[state.currentIndex]] : null;
+  const nextMovie = state.currentIndex + 1 < TOTAL_MOVIES ? moviesById[state.shuffledMovieIds[state.currentIndex + 1]] : null;
 
   return {
     state,

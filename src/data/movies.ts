@@ -84,3 +84,5 @@ export const movies: Movie[] = [
   { id: 'ouest-sauvage', titleKey: 'movies.ouest_sauvage', year: 1968, genres: ['action', 'drama'], posterGradient: gradients.action, posterUrl: '/static/posters/ouest-sauvage.webp' },
   { id: 'z-film', titleKey: 'movies.z_film', year: 1969, genres: ['thriller', 'drama'], posterGradient: gradients.thriller, posterUrl: '/static/posters/z-film.webp' },
 ];
+
+export const moviesById: Record<string, Movie> = Object.fromEntries(movies.map(m => [m.id, m]));

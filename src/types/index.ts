@@ -48,5 +48,5 @@ export interface GameState {
   profile: CinemaProfile | null;
   stats: GameStats | null;
   soundEnabled: boolean;
-  shuffledMovies: Movie[];
+  shuffledMovieIds: string[];
 }
