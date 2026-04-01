@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { CardStack } from '../components/CardStack/CardStack';
 import { ActionButtons } from '../components/ActionButtons/ActionButtons';
 import { ProgressBar } from '../components/ProgressBar/ProgressBar';
+import { SoundToggleButton } from '../components/SoundToggleButton/SoundToggleButton';
 import { Movie, SwipeDirection } from '../types';
 import { triggerCardSwipe } from '../utils/swipeUtils';
 import './screens.css';
@@ -144,14 +145,11 @@ export function GameScreen({
       <motion.div className="game-screen__top" variants={topBarVariants}>
         <ProgressBar current={currentIndex} />
 
-        <button className="control-btn control-btn--small game-screen__top-left" onClick={onToggleSound} aria-label={soundEnabled ? t('app.soundOn') : t('app.soundOff')}>
-          {soundEnabled ? (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-          )}
-          <div className="control-btn-shine" />
-        </button>
+        <SoundToggleButton 
+          soundEnabled={soundEnabled} 
+          onToggleSound={onToggleSound} 
+          className="control-btn--small game-screen__top-left" 
+        />
         <button className="control-btn control-btn--small lang-toggle game-screen__top-right" onClick={toggleLanguage}>
           {i18n.language === 'fr' ? 'EN' : 'FR'}
           <div className="control-btn-shine" />

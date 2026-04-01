@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GlTitle } from '../components/GlTitle';
+import { SoundToggleButton } from '../components/SoundToggleButton/SoundToggleButton';
+import { IconArrowLeft, IconArrowUp, IconArrowRight } from '../components/Icons/Icons';
 import { TOTAL_MOVIES } from '../utils/constants';
 import './screens.css';
 
@@ -70,14 +72,7 @@ export function WelcomeScreen({ onStart, soundEnabled, onToggleSound, playSound 
         <div className="org-logo">
           <img src="/static/bda.webp" alt="BDA Logo" />
         </div>
-        <button className="control-btn" onClick={onToggleSound} aria-label={soundEnabled ? t('app.soundOn') : t('app.soundOff')}>
-          {soundEnabled ? (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-          )}
-          <div className="control-btn-shine" />
-        </button>
+        <SoundToggleButton soundEnabled={soundEnabled} onToggleSound={onToggleSound} />
         <button className="control-btn lang-toggle" onClick={toggleLanguage}>
           {i18n.language === 'fr' ? 'EN' : 'FR'}
           <div className="control-btn-shine" />
@@ -163,19 +158,7 @@ export function WelcomeScreen({ onStart, soundEnabled, onToggleSound, playSound 
                 <div className="tutorial__instructions">
                   <div className="tutorial__item tutorial__item--leave">
                     <div className="tutorial__arrow-container">
-                      <svg className="tutorial__arrow-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                          <linearGradient id="arrow-leave" x1="20" y1="12" x2="4" y2="12" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stopColor="#ff4d6d" stopOpacity="0.6"/>
-                            <stop offset="100%" stopColor="#ff4d6d"/>
-                          </linearGradient>
-                          <filter id="glow-leave" x="-30%" y="-30%" width="160%" height="160%">
-                            <feGaussianBlur stdDeviation="1.5" result="blur"/>
-                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                          </filter>
-                        </defs>
-                        <path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="url(#arrow-leave)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" filter="url(#glow-leave)"/>
-                      </svg>
+                      <IconArrowLeft className="tutorial__arrow-svg" />
                     </div>
                     <div className="tutorial__text-group">
                       <span className="tutorial__label">{t('app.tutorial.labelLeave')}</span>
@@ -185,19 +168,7 @@ export function WelcomeScreen({ onStart, soundEnabled, onToggleSound, playSound 
 
                   <div className="tutorial__item tutorial__item--unknown">
                     <div className="tutorial__arrow-container">
-                      <svg className="tutorial__arrow-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                          <linearGradient id="arrow-unknown" x1="12" y1="19" x2="12" y2="5" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stopColor="#4da6ff" stopOpacity="0.6"/>
-                            <stop offset="100%" stopColor="#4da6ff"/>
-                          </linearGradient>
-                          <filter id="glow-unknown" x="-30%" y="-30%" width="160%" height="160%">
-                            <feGaussianBlur stdDeviation="1.5" result="blur"/>
-                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                          </filter>
-                        </defs>
-                        <path d="M12 19V5M12 5L6 11M12 5L18 11" stroke="url(#arrow-unknown)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" filter="url(#glow-unknown)"/>
-                      </svg>
+                      <IconArrowUp className="tutorial__arrow-svg" />
                     </div>
                     <div className="tutorial__text-group">
                       <span className="tutorial__label">{t('app.tutorial.labelUnknown')}</span>
@@ -207,19 +178,7 @@ export function WelcomeScreen({ onStart, soundEnabled, onToggleSound, playSound 
 
                   <div className="tutorial__item tutorial__item--love">
                     <div className="tutorial__arrow-container">
-                      <svg className="tutorial__arrow-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                          <linearGradient id="arrow-love" x1="4" y1="12" x2="20" y2="12" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stopColor="#FFD700" stopOpacity="0.6"/>
-                            <stop offset="100%" stopColor="#FFD700"/>
-                          </linearGradient>
-                          <filter id="glow-love" x="-30%" y="-30%" width="160%" height="160%">
-                            <feGaussianBlur stdDeviation="1.5" result="blur"/>
-                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                          </filter>
-                        </defs>
-                        <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="url(#arrow-love)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" filter="url(#glow-love)"/>
-                      </svg>
+                      <IconArrowRight className="tutorial__arrow-svg" />
                     </div>
                     <div className="tutorial__text-group">
                       <span className="tutorial__label">{t('app.tutorial.labelLove')}</span>
